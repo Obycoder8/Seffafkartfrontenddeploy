@@ -26,7 +26,7 @@ function FormAssignReferee(props) {
      */
     const handleSubmit = async (e) => {
         e.preventDefault();
-        Axios.put("https://team20-seffafkart.herokuapp.com/api/assignofficials", {
+        Axios.put("http://localhost:3001/api/assignofficials", {
           main_referee: main_referee,
           first_assistant_referee: first_assistant_referee,
           second_assistant_referee: second_assistant_referee,

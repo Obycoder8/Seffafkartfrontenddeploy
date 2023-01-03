@@ -13,7 +13,7 @@ export default function Posts(){
     const [data, setData] = useState([])
 
     useEffect(() => {
-        Axios.get('https://team20-seffafkart.herokuapp.com/api/football_match')
+        Axios.get('http://localhost:3001/api/football_match')
         .then(res => {
             setData(res.data)
         }).catch(err => console.log(err))

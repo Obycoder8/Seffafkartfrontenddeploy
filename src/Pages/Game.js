@@ -34,18 +34,18 @@ function Game(props) {
    * @param  {string} rate rate type, pos or neg, of the adminisrative act
    */
   const handleRate = async (id,rate) => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/ratingadminact/act_id=${id}&user_id=${user[0].id}`)
+    Axios.get(`http://localhost:3001/api/ratingadminact/act_id=${id}&user_id=${user[0].id}`)
     .then((response) => {
         console.log(response.data,"data")
         if(response.data.length !== 0) {
           if(response.data[0].rate_type === rate) {
             console.log("del time")
-            Axios.delete(`https://team20-seffafkart.herokuapp.com/api/deleterate/${response.data[0].id}`)
+            Axios.delete(`http://localhost:3001/api/deleterate/${response.data[0].id}`)
             .then((response) => {
                 alert("deleted");
             });
           } else {
-            Axios.put("https://team20-seffafkart.herokuapp.com/api/updaterateadminact", {
+            Axios.put("http://localhost:3001/api/updaterateadminact", {
               user_id:user[0].id,
               rate_type: rate,
               act_id: id
@@ -56,7 +56,7 @@ function Game(props) {
         } 
         else {
           alert("not rated before");
-          Axios.post("https://team20-seffafkart.herokuapp.com/api/rateadminact", {
+          Axios.post("http://localhost:3001/api/rateadminact", {
             user_id:user[0].id,
             rate_type: rate,
             act_id: id
@@ -68,12 +68,12 @@ function Game(props) {
   }
 
   useEffect(() => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/football_match/${match_id}`)
+    Axios.get(`http://localhost:3001/api/football_match/${match_id}`)
     .then(res => {
         setMatchData(res.data[0])
     }).catch(err => console.log(err))
 
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/admin_acts/match_id=${match_id}`)
+    Axios.get(`http://localhost:3001/api/admin_acts/match_id=${match_id}`)
     .then(res => {
         setAdminActs(res.data)
     }).catch(err => console.log(err))
@@ -82,7 +82,7 @@ function Game(props) {
 }, [])
 
   useEffect(() => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/ratingreferee/match_id=${match_id}`)
+    Axios.get(`http://localhost:3001/api/ratingreferee/match_id=${match_id}`)
     .then((response) => {
       console.log(response.data)
       response.data.forEach(element => {
@@ -109,13 +109,13 @@ function Game(props) {
    * @param  {integer} data rate value
    */
   const getRateRefereeOne = (data) => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${1}`)
+    Axios.get(`http://localhost:3001/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${1}`)
     .then((response) => {
         console.log(response.data,"data respoms")
         console.log(response)
         if(response.data.length !== 0) {
           alert("rated before")
-          Axios.put("https://team20-seffafkart.herokuapp.com/api/updateratereferee", {
+          Axios.put("http://localhost:3001/api/updateratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
@@ -126,7 +126,7 @@ function Game(props) {
         } 
         else {
           alert("not rated before");
-          Axios.post("https://team20-seffafkart.herokuapp.com/api/ratereferee", {
+          Axios.post("http://localhost:3001/api/ratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
@@ -140,13 +140,13 @@ function Game(props) {
   }
 
   const getRateRefereeTwo = (data) => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${2}`)
+    Axios.get(`http://localhost:3001/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${2}`)
     .then((response) => {
         console.log(response.data,"data respoms")
         console.log(response)
         if(response.data.length !== 0) {
           alert("rated before")
-          Axios.put("https://team20-seffafkart.herokuapp.com/api/updateratereferee", {
+          Axios.put("http://localhost:3001/api/updateratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
@@ -157,7 +157,7 @@ function Game(props) {
         } 
         else {
           alert("not rated before");
-          Axios.post("https://team20-seffafkart.herokuapp.com/api/ratereferee", {
+          Axios.post("http://localhost:3001/api/ratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
@@ -171,13 +171,13 @@ function Game(props) {
   }
 
   const getRateRefereeThree = (data) => {
-    Axios.get(`https://team20-seffafkart.herokuapp.com/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${3}`)
+    Axios.get(`http://localhost:3001/api/ratingreferee/match_id=${match_id}&user_id=${user[0].id}&referee_num=${3}`)
     .then((response) => {
         console.log(response.data,"data respoms")
         console.log(response)
         if(response.data.length !== 0) {
           alert("rated before")
-          Axios.put("https://team20-seffafkart.herokuapp.com/api/updateratereferee", {
+          Axios.put("http://localhost:3001/api/updateratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
@@ -188,7 +188,7 @@ function Game(props) {
         } 
         else {
           alert("not rated before");
-          Axios.post("https://team20-seffafkart.herokuapp.com/api/ratereferee", {
+          Axios.post("http://localhost:3001/api/ratereferee", {
             match_id: match_id,
             user_id:user[0].id,
             value: data,
