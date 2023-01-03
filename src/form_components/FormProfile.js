@@ -11,8 +11,6 @@ function FormProfile() {
     const user = useSelector((state) => state.user.currentUser);
     const dispatch = useDispatch();
     let userId = null;
-    console.log("user")
-    console.log(user);
 
     const [deleted, setDeleted] = useState(false);
     const [newUsername, SetNewUsername] = useState("");
@@ -27,7 +25,7 @@ function FormProfile() {
 
     const updatePassword = (e) => {
         e.preventDefault();
-        Axios.put("https://seffafkart-client.onrender.com/api/updatepassword", {
+        Axios.put("https://team20-seffafkart.herokuapp.com/api/updatepassword", {
           password: newPassword,
           id: userId,
         }).then((response) => {
@@ -38,7 +36,7 @@ function FormProfile() {
 
       const updateUsername = (e) => {
         e.preventDefault();
-        Axios.put("https://seffafkart-client.onrender.com/api/updateusername", {
+        Axios.put("https://team20-seffafkart.herokuapp.com/api/updateusername", {
           userName: newUsername,
           id: userId,
         }).then((response) => {
@@ -49,7 +47,7 @@ function FormProfile() {
     
       const updateEmail = (e) => {
         e.preventDefault();
-        Axios.put("https://seffafkart-client.onrender.com/api/updateemail", {
+        Axios.put("https://team20-seffafkart.herokuapp.com/api/updateemail", {
           email: newEmail,
           id: userId,
         }).then((response) => {
@@ -60,7 +58,7 @@ function FormProfile() {
     
       const updateUserInfo = (e) => {
         e.preventDefault();
-        Axios.put("https://seffafkart-client.onrender.com/api/updateuserinfo", {
+        Axios.put("https://team20-seffafkart.herokuapp.com/api/updateuserinfo", {
           userInfo: newUserInfo,
           id: userId,
         }).then((response) => {
@@ -71,7 +69,7 @@ function FormProfile() {
     
       const deleteUser = (e) => {
         e.preventDefault();
-        Axios.delete(`https://seffafkart-client.onrender.com/api/delete/${user[0].username}`)
+        Axios.delete(`https://team20-seffafkart.herokuapp.com/api/delete/${user[0].username}`)
         .then((response) => {
             setDeleted(true);
             dispatch(logoutUser)
