@@ -55,6 +55,7 @@ function Game(props) {
                 rate_type: rate
               }).then((response) => {
                   alert("deleted");
+                  setChange(change+1)
               });
             } else {
               Axios.put("https://team20-seffafkart.herokuapp.com/api/updaterateadminact", {
@@ -63,6 +64,7 @@ function Game(props) {
                 act_id: act_id
               }).then((response) => {
                   alert("successfully voted act");
+                  setChange(change+1)
               });
             }
           } 
@@ -74,6 +76,7 @@ function Game(props) {
               act_id: act_id
             }).then((response) => {
                 alert("successfully voted act");
+                setChange(change+1)
             });
           }
       });
